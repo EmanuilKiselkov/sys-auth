@@ -11,16 +11,16 @@ app.use(bodyParser.json());
 const users = [];
 
 app.post("/api/register", (req, res) => {
-  const { username, passowrd } = req.body;
+  const { username, password } = req.body;
   const newUser = { username, password };
-  username.push(newUser);
+  users.push(newUser);
   res.json({ success: true, message: "Registration successful" });
 });
 
 app.post("/api/login", (req, res) => {
-  const { username, passoword } = req.body;
+  const { username, password } = req.body;
   const user = users.find(
-    (u) => u.username === username && u.passoword === passoword
+    (u) => u.username === username && u.password === password
   );
 
   if (user) {
